@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Company Bootstrap Template - Index</title>
     <meta content="" name="descriptison">
@@ -68,23 +69,30 @@
                     </ul>
                 </li>
 
+                <li><a href="{{ route('category.index')}}">Categories</a></li>
                 <li><a href="{{ route('services')}}">Services</a></li>
                 <li><a href="{{ route('portfolio')}}">Portfolio</a></li>
                 <li><a href="{{ route('pricing') }}">Pricing</a></li>
                 <li><a href="{{ route('blog')}}">Blog</a></li>
                 <li><a href="{{ route('contact')}}">Contact</a></li>
-                <li><a href="{{ route('login')}}">Login</a></li>
-                <li><a href="{{ route('register')}}">Register</a></li>
-                <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
+                <li class="drop-down"><a href="#">Account</a>
+                    <ul>
+                        <li><a href="{{ route('login')}}">Login</a></li>
+                        <li><a href="{{ route('register')}}">Register</a></li>
+                        <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                    Logout
-                    </a></li>
+                                Logout
+                            </a></li>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    </ul>
+               </ul>
+                </li>
+             </ul>
+            </li>
 
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                    @csrf
-                </form>
 
-            </ul>
         </nav><!-- .nav-menu -->
 
         <div class="header-social-links">
@@ -191,6 +199,7 @@
 
 <!-- Template Main JS File -->
 <script src="{{ asset('assets/js/main.js') }}"></script>
+<script src="{{ asset('assets/js/custom.js') }}"></script>
 
 </body>
 

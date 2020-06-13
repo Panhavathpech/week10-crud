@@ -24,6 +24,15 @@ Route::get('/blogsingle', 'HomeController@blogsingle')->name('blogsingle');
 Route::get('/auth/login', 'HomeController@login')->name('login');
 Route::get('/auth/register', 'HomeController@register')->name('register');
 
+Route::get('/categories', 'CategoryController@index')->name('category.index');
+Route::get('/categories/create', 'CategoryController@create')->name('category.create');
+Route::post('/categories', 'CategoryController@store')->name('category.store');
+Route::get('/categories/{id}/edit', 'CategoryController@edit')->name('category.edit');
+Route::put('/categories/{id}/update', 'CategoryController@update')->name('category.update');
+Route::delete('/categories/{id}/delete', 'CategoryController@delete')->name('category.delete');
+Route::delete('/categories/{id}/delete-ajax', 'CategoryController@deleteAjax')->name('category.deleteAjax');
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
